@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const hbs = require('hbs')
+const port = process.env.PORT || 3000
 const pathname = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, "../templates/views")
 const partialsPath = path.join(__dirname, "../templates/partials")
@@ -79,6 +80,6 @@ app.get("/products", (req,res)=>{
 
 })
 
-app.listen(3000,() =>{
+app.listen(port,() =>{
     console.log("Server started at 3000 port number")
 })
