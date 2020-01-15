@@ -11,7 +11,11 @@ const forecast = (coordinate1,coordinate2,callback) =>{
            }else if(body.error){
                   callback(body.error, undefined)
            }else{
-                  callback(undefined, body.daily.data[0].summary)
+                   const high = (body.daily.data[0].temperatureHigh - 32)*(5/9)
+                   const high1 = Number(high).toFixed(2)
+                   const low =  (body.daily.data[0].temperatureLow -32)*(5/9)
+                   const currentTemperature =(body.currently.temperature - 32)*(5/9)
+                  callback(undefined, body.daily.data[0].summary + ' It is currently ' + Number(currentTemperature).toFixed(2) + ' C out. The high today is ' + high1 + ' C and with a low of ' + Number(low).toFixed(2) +' C' + '. There is a ' + body.currently.precipProbability + '% chance of rain.')
            }
     })
 
